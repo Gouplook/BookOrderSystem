@@ -20,12 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26dec1fe-348e-4cd7-94a2-46b8a2145510" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/model/user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/db.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/bookhandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/bookhandler.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/orderhandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/orderhandler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/shopingcart.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/shopingcart.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/userhandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/userhandler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/user.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +73,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -84,9 +84,9 @@
     </environment>
   </component>
   <component name="WindowStateProjectService">
-    <state x="1741" y="220" key="SettingsEditor" timestamp="1607333789632">
+    <state x="1741" y="220" key="SettingsEditor" timestamp="1607417210691">
       <screen x="1280" y="41" width="1920" height="1080" />
     </state>
-    <state x="1741" y="220" key="SettingsEditor/1280.41.1920.1080/0.0.1280.800@1280.41.1920.1080" timestamp="1607333789632" />
+    <state x="1741" y="220" key="SettingsEditor/1280.41.1920.1080/0.0.1280.800@1280.41.1920.1080" timestamp="1607417210691" />
   </component>
 </project>
