@@ -5,3 +5,16 @@
 @Description: 订单处理操作
 *********************************************/
 package controller
+
+
+//Checkout //去结账
+
+//SendOrder 发货
+
+//TakeOrder 收货
+
+//GetMyOrders 获取我的订单
+
+//GetOrderInfo 获取订单对应的订单项
+
+//GetOrders 获取所有订单
