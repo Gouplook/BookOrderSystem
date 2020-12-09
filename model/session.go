@@ -20,14 +20,27 @@ type Session struct {
 }
 
 //AddSession 向数据库中添加Session
-func (s *Session) AddSession(session *Session) error {
-
+func (s *Session) AddSession(sess *Session) (err error) {
+	// sql语句
+	sqlStr := "insert into session values(?,?,?)"
+	// 执行插入
+	_, err = utils.Db.Exec(sqlStr,sess.SessionId,sess.UserId,sess.UserName)
+	if err != nil {
+		return err
+	}
 	return nil
 }
 
 //DeleteSession 删除数据库中的Session
-func (s *Session)DeleteSession(sessId int )(error){
+func (s *Session)DeleteSession(sessId string )(err error){
+	// sql 语句
+	sqlStr := "delete from sessions where session_id = ?"
 
+	// 执行
+	_, err = utils.Db.Exec(sqlStr,sessId)
+	if err != nil {
+		return err
+	}
 	return nil
 }
 

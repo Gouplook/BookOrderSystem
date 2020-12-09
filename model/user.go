@@ -39,3 +39,7 @@ func (u *User)Insert(username string, password string,email string) (error){
 }
 
 //CheckUserNameAndPassword 根据用户名和密码从数据库中查询一条记录
+func (u *User)CheckUserNameAndPassword(username ,password string)(*User,error){
+
+	return nil,nil
+}

@@ -16,7 +16,7 @@ type Page struct {
 	TotalRecord int64   // 总记录数，通过查询数据库得到
 	MinPrice    string
 	MaxPrice    string
-	IsLogin     bool
+	IsLogin     bool     // 判断用户是否已经登陆
 	UserName    string
 }
 
