@@ -6,10 +6,31 @@
 *********************************************/
 package controller
 
-import "net/http"
+import (
+	"BookOrderSystem/model"
+	"fmt"
+	"net/http"
+)
 
 //GetPageBooksByPrice 获取带分页和价格范围的图书
 func GetPageBooksByPrice(w http.ResponseWriter, r *http.Request){
+	// 获取页码
+	pageNo := r.FormValue("pageNo")
+	//获取价格范围
+	minPrice := r.FormValue("min")
+	MaxPrcie := r.FormValue("max")
+	if pageNo == "" {
+		pageNo = "1"
+	}
+	bookMode := &model.Book{}
+	var page *model.Page
+	if minPrice == "" && MaxPrcie == "" {
+		//调用中获取带分页的图书的函数
+		page,_ = bookMode.GetPageBooks(pageNo)
+
+	}else {
+		fmt.Println(page)
+	}
 
 }
 

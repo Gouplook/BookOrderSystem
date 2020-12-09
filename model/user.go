@@ -28,6 +28,7 @@ func (u *User) CheckUserName(userName string) (*User,error) {
 	return u,nil
 
 }
+// Insert 向数据库中插入用户信息
 func (u *User)Insert(username string, password string,email string) (error){
 	sqlStr := "insert into users(uesrname,password,email) values(?,?,?)"
 	_, err := utils.Db.Exec(sqlStr,username,password,email)
@@ -36,3 +37,5 @@ func (u *User)Insert(username string, password string,email string) (error){
 	}
 	return nil
 }
+
+//CheckUserNameAndPassword 根据用户名和密码从数据库中查询一条记录

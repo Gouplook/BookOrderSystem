@@ -42,7 +42,16 @@ func Regist(w http.ResponseWriter, r *http.Request) {
 
 //Login 处理用户登录的函数
 func Login(w http.Response, r *http.Request) {
-	// 验证用户名是否存在，
+	// 1.1 判断用户是否已经登陆
+
+	//1.2 登陆去显示首页
+
+
+	// 获取用户名和密码，验证用户名是否存在。
+
+
+	// 用户名和密码正确，生成UUID作为Session的Id
+
 
 	// 校验用户名和密码是否正常
 
