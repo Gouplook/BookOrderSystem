@@ -105,7 +105,6 @@ func CheckUserName(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("<font style='color:green'>用户名可用！</font>"))
 
 	}
-
 }
 
 //Logout //处理用户注销的函数 main调用

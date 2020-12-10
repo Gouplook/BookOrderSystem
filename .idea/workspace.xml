@@ -23,10 +23,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/bookhandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/bookhandler.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/userhandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/controller/userhandler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/book.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/book.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/page.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/page.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/session.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/session.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/model/user.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,9 +88,9 @@
       <screen x="1280" y="41" width="1920" height="1080" />
     </state>
     <state x="1741" y="220" key="SettingsEditor/1280.41.1920.1080/0.0.1280.800@1280.41.1920.1080" timestamp="1607499884358" />
-    <state x="1932" y="336" width="615" height="490" key="find.popup" timestamp="1607503742296">
+    <state x="1932" y="336" width="615" height="490" key="find.popup" timestamp="1607568193306">
       <screen x="1280" y="41" width="1920" height="1080" />
     </state>
-    <state x="1932" y="336" width="615" height="490" key="find.popup/1280.41.1920.1080/0.0.1280.800@1280.41.1920.1080" timestamp="1607503742296" />
+    <state x="1932" y="336" width="615" height="490" key="find.popup/1280.41.1920.1080/0.0.1280.800@1280.41.1920.1080" timestamp="1607568193306" />
   </component>
 </project>
