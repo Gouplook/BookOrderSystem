@@ -25,6 +25,4 @@ func main(){
 	http.HandleFunc("/checUserName",controller.CheckUserName)
 
 
-
-
 }

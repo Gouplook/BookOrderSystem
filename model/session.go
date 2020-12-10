@@ -64,6 +64,7 @@ func (s *Session) GetSession(sessId string) (*Session, error) {
 func (s *Session) IsLogin(r *http.Request)(bool, *Session){
 	//根据Cookie的name获取Cookie
 	cookie,_ := r.Cookie("user")
+	// 没有登陆，登陆后添加cookie
 	if cookie != nil{
 		//获取Cookie的value
 		cookieValue := cookie.Value

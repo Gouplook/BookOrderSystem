@@ -22,7 +22,7 @@ func Regist(w http.ResponseWriter, r *http.Request) {
 	email := r.PostFormValue("email")
 
 	// 数据查询验证操作
-	userModel := model.User{}
+	userModel := new(model.User)
 	u, _ := userModel.CheckUserName(username)
 	if u.Id > 0 { // 表示用户存在
 		t := template.Must(template.ParseFiles("views/pages/user/regist.html"))
@@ -108,10 +108,12 @@ func CheckUserName(w http.ResponseWriter, r *http.Request) {
 }
 
 //Logout //处理用户注销的函数 main调用
+// 1：获取cookie ，通过cookie，查找session中的用户uid，在数据库对其进行删除
+// 2：设置cookie失效，发送到浏览器
 func Logout(w http.ResponseWriter, r *http.Request) {
 	// 获取Cookie
 	cookie, _ := r.Cookie("user")
-	sessModel := model.Session{}
+	sessModel := new(model.Session)
 	if cookie != nil {
 		// 获取cookie的value值
 		cokieValue := cookie.Value

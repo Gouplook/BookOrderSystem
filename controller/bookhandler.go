@@ -67,6 +67,10 @@ func GetPageBooks(w http.ResponseWriter, r *http.Request){
 
 //UpdateOrAddBook 更新或添加图书
 func UpdateOrAddBook(w http.ResponseWriter, r *http.Request){
+	// 获取图书基本信息
+
+	bookModel := new(model.Book)
+	fmt.Println(bookModel)
 
 }
 
