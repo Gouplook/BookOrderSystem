@@ -9,7 +9,7 @@ package model
 import (
 	"BookOrderSystem/utils"
 )
-
+//User结构体
 type User struct {
 	Id       int
 	UserName string
@@ -19,7 +19,6 @@ type User struct {
 
 //CheckUserName 根据用户名和密码从数据库中查询一条记录
 func (u *User) CheckUserName(userName string) (*User,error) {
-
 	// 写sql语句
 	sqlStr := "select id, username,password,email from users where username=?"
 	// 执行查询

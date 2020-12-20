@@ -27,6 +27,7 @@ func GetPageBooksByPrice(w http.ResponseWriter, r *http.Request) {
 	}
 	bookMode := &model.Book{}
 	var page *model.Page
+	// 没有输入价格
 	if minPrice == "" && MaxPrice == "" {
 		//调用中获取带分页的图书的函数
 		page, _ = bookMode.GetPageBooks(pageNo)

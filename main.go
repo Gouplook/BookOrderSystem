@@ -22,7 +22,7 @@ func main(){
 	//注销
 	http.HandleFunc("logout", controller.Logout)
 	// 通过Ajax请求验证用户名是否可用
-	http.HandleFunc("/checUserName",controller.CheckUserName)
+	http.HandleFunc("/checkUserName",controller.CheckUserName)
 
 
 }
