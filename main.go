@@ -13,8 +13,16 @@ import (
 
 func main(){
 
+	//设置处理静态资源，如css和js文件
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("views/static"))))
+	//直接去html页面
+	http.Handle("/pages/", http.StripPrefix("/pages/", http.FileServer(http.Dir("views/pages"))))
+
 	// 去首页
 	http.HandleFunc("/main", controller.GetPageBooksByPrice)
+	//获取带分页的图书信息
+	http.HandleFunc("/getPageBooks", controller.GetPageBooks)
+	http.HandleFunc("/getPageBooksByPrice",controller.GetPageBooksByPrice)
 	//注册
 	http.HandleFunc("/regist",controller.Regist)
 	//登录
@@ -24,5 +32,6 @@ func main(){
 	// 通过Ajax请求验证用户名是否可用
 	http.HandleFunc("/checkUserName",controller.CheckUserName)
 
+	http.ListenAndServe(":10086",nil)
 
 }

@@ -2,7 +2,7 @@
 
 @Author :yinjinlin<yinjinlin_uplook@163.com>
 @Time : 2020/12/9 上午9:22
-@Description:
+@Description: 生成32为Uid
 
 *********************************************/
 package utils
