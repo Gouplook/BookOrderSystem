@@ -16,7 +16,10 @@ import (
 type Session struct {
 	SessionId string
 	UserName  string
-	UserId    int
+	UserId    string
+	Cart *Cart
+	OrderId string
+	//Orders []*
 }
 
 //AddSession 向数据库中添加Session
@@ -70,7 +73,7 @@ func (s *Session) IsLogin(r *http.Request)(bool, *Session){
 		cookieValue := cookie.Value
 		//根据cookieValue去数据库中查询与之对应的Session
 		session,_ := s.GetSession(cookieValue)
-		if session.UserId >0{
+		if len(session.UserId) >0{
 			//已经登陆
 			return true,session
 		}

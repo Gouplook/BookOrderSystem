@@ -11,6 +11,7 @@ import (
 	"database/sql"
 	_ "github.com/go-sql-driver/mysql"
 )
+// 定义全局变量
 var (
 	Db *sql.DB
 	err error

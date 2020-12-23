@@ -13,7 +13,7 @@ import (
 
 //User结构体
 type User struct {
-	Id       int
+	Id       string
 	UserName string
 	PassWord string
 	Email    string

@@ -13,7 +13,7 @@ package controller
 
 //TakeOrder 收货
 
-//GetMyOrders 获取我的订单
+//GetMyOrders 获取用户订单
 
 //GetOrderInfo 获取订单对应的订单项
 

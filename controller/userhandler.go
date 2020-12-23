@@ -25,7 +25,7 @@ func Regist(w http.ResponseWriter, r *http.Request) {
 	// 数据查询验证操作
 	userModel := new(model.User)
 	u, _ := userModel.CheckUserName(username)
-	if u.Id > 0 { // 表示用户存在
+	if len(u.Id) > 0 { // 表示用户存在
 		t := template.Must(template.ParseFiles("views/pages/user/regist.html"))
 		t.Execute(w, "用户名已经存在")
 	} else {
@@ -59,7 +59,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		//调用user model 中验证用户名和密码的方法 CheckUserNameAndPassword
 		user, _ := userModel.CheckUserNameAndPassword(username, password)
 		// 如果用户名和密码正确 生产UUID作为Session的id
-		if user.Id > 0 {
+		if len(user.Id) > 0 {
 			uuid := utils.CreateUUid()
 			//创建一个session
 			sess := &model.Session{
@@ -99,7 +99,7 @@ func CheckUserName(w http.ResponseWriter, r *http.Request) {
 	userModel := model.User{}
 	user, _ := userModel.CheckUserName(username)
 	// 2.1: 用户名存在
-	if user.Id > 0 {
+	if len(user.Id) > 0 {
 		w.Write([]byte("用户名已经存在"))
 
 	} else { // 2.2: 用户名可用

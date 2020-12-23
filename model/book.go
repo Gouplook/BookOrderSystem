@@ -13,7 +13,7 @@ import (
 )
 
 type Book struct {
-	Id     int
+	Id     string
 	Title  string
 	Author string
 	Price  float64

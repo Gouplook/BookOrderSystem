@@ -18,7 +18,7 @@ func main(){
 	//直接去html页面
 	http.Handle("/pages/", http.StripPrefix("/pages/", http.FileServer(http.Dir("views/pages"))))
 
-	// 去首页
+	// 用户模块 ---
 	http.HandleFunc("/main", controller.GetPageBooksByPrice)
 	//获取带分页的图书信息
 	http.HandleFunc("/getPageBooks", controller.GetPageBooks)
@@ -33,5 +33,13 @@ func main(){
 	http.HandleFunc("/checkUserName",controller.CheckUserName)
 
 	http.ListenAndServe(":10086",nil)
+
+
+	// 购物车模块 ---
+	// 添加图书到购物车
+	http.HandleFunc("/addBook2Cart", controller.AddBookToCart)
+
+	//根据用户的id获取购物车信息
+	http.HandleFunc("",controller.GetCartInfo)
 
 }
