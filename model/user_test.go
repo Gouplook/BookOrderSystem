@@ -17,7 +17,7 @@ func TestMain(m *testing.M) {
 }
 
 
-// 用户模块
+// 用户模块测试
 func TestUser(t *testing.T){
 	fmt.Println("测试user中的函数")
 	//t.Run("Insert: ",testUser_Insert)
@@ -47,4 +47,21 @@ func testUser_CheckUserName(t *testing.T) {
 func testUser_CheckUserNameAndPassword(t *testing.T) {
 	u ,_ := new(User).CheckUserNameAndPassword("admin","123456")
 	fmt.Println(u.Id)
+}
+
+// 图书模块测试
+func TestBook(t *testing.T){
+	fmt.Println("测试TestBook中的函数")
+	t.Run("GetBooks:", test_GetBooks)
+
+
+}
+
+func test_GetBooks(t *testing.T){
+
+	b,_ := new(Book).GetBooks()
+	for _, v := range b{
+		fmt.Println(v)
+	}
+
 }

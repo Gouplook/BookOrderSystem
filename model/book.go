@@ -9,6 +9,7 @@ package model
 
 import (
 	"BookOrderSystem/utils"
+	"fmt"
 	"strconv"
 )
 
@@ -25,17 +26,21 @@ type Book struct {
 //GetBooks 获取数据库中所有的图书
 func (b *Book)GetBooks()([]*Book, error){
 	//sql语句
-	sqlStr := "select id,title,author,price,sales,stock,img_pth from books"
+	sqlStr := "select id,title,author,price,sales,stock,imgpth from books"
 	//执行
 	rows,_ := utils.Db.Query(sqlStr)
 
 	var books []*Book
+	books = make([]*Book,0)
 	for rows.Next(){
-		//book := &Book{}
-		rows.Scan(b.Id,b.Title,b.Author,b.Price,b.Sales,b.Stock, b.ImgPth)
+		book := &Book{}
+		//rows.Scan(&b.Id,&b.Title,&b.Author,&b.Price,&b.Sales,&b.Stock, &b.ImgPth)
+		rows.Scan(&book.Id,&book.Title,&book.Author,&book.Price,&book.Sales,&book.Stock, &book.ImgPth)
 		//将b添加到books中
-		books = append(books,b)
+		books = append(books,book)
 	}
+
+	fmt.Println(books)
 	return books,nil
 }
 

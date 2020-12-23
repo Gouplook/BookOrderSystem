@@ -8,6 +8,7 @@
 package model
 
 
+// 传输过程中
 //Data 结构
 type Data struct {
 	Amount      float64
