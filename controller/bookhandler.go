@@ -80,11 +80,11 @@ func UpdateOrAddBook(w http.ResponseWriter, r *http.Request) {
 
 	// 插入到数据库中的数据需要转换
 	fPrice, _ := strconv.ParseFloat(price, 64)
-	iBookId, _ := strconv.Atoi(bookId)
+	//iBookId, _ := strconv.Atoi(bookId)
 	iSales, _ := strconv.Atoi(sales)
 	iStock, _ := strconv.Atoi(stock)
 	book := &model.Book{
-		Id: iBookId,
+		Id: bookId,
 		Title: title,
 		Author: author,
 		Price: fPrice,
@@ -93,7 +93,7 @@ func UpdateOrAddBook(w http.ResponseWriter, r *http.Request) {
 		ImgPth: "/static/img/default.jpg",
 
 	}
-	if book.Id > 0 {
+	if len(book.Id) > 0 {
 		// 更新
 		err := book.UpdateBook()
 		if err != nil {
@@ -123,7 +123,7 @@ func ToUpdateBookPage(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("更新图书失败......")
 		return
 	}
-	if book.Id > 0 {
+	if len(book.Id) > 0 {
 		//在更新图书
 		//解析模板 (编辑页）
 		t := template.Must(template.ParseFiles("views/pages/manger/book_edit.html"))

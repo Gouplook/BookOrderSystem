@@ -9,7 +9,6 @@ package model
 
 import (
 	"BookOrderSystem/utils"
-	"fmt"
 	"strconv"
 )
 
@@ -31,23 +30,20 @@ func (b *Book)GetBooks()([]*Book, error){
 	rows,_ := utils.Db.Query(sqlStr)
 
 	var books []*Book
-	books = make([]*Book,0)
+	//books = make([]*Book,0)
 	for rows.Next(){
-		book := &Book{}
-		//rows.Scan(&b.Id,&b.Title,&b.Author,&b.Price,&b.Sales,&b.Stock, &b.ImgPth)
+		book := new(Book)
 		rows.Scan(&book.Id,&book.Title,&book.Author,&book.Price,&book.Sales,&book.Stock, &book.ImgPth)
 		//将b添加到books中
 		books = append(books,book)
 	}
-
-	fmt.Println(books)
 	return books,nil
 }
 
 //AddBook 向数据库中添加一本图书
 func (b *Book)AddBook() error{
 	// sql 语句
-	sqlStr := "insert into books(title,author,price,sales,stock,img_pth) value (?,?,?,?,?,?)"
+	sqlStr := "insert into books(title,author,price,sales,stock,imgpth) value (?,?,?,?,?,?)"
 	// 执行
 	_,err := utils.Db.Exec(sqlStr,b.Title,b.Author,b.Price, b.Sales, b.Stock, b.ImgPth)
 	if err != nil {
@@ -59,8 +55,9 @@ func (b *Book)AddBook() error{
 //DeleteBook 根据图书的id从数据库中删除一本图书
 func (b *Book)DeleteBook(bookId string)error{
 	// sql语句
+	//id,_ := strconv.Atoi(bookId) 转化和不转化都行
 	sqlStr := "delete from books where id = ?"
-	_,err := utils.Db.Exec(sqlStr,b.Id)
+	_,err := utils.Db.Exec(sqlStr,bookId)
 	if err != nil {
 		return err
 	}
@@ -70,11 +67,12 @@ func (b *Book)DeleteBook(bookId string)error{
 //GetBookByID 根据图书的id从数据库中查询出一本图书
 func (b *Book) GetBookByID(bookId string) (*Book, error) {
 	// sql语句
-	sqlStr := "select id,title,author,price,sales,stock,img_pth from books where id = ?"
+	sqlStr := "select id,title,author,price,sales,stock,imgpth from books where id = ?"
 	//执行
 	row := utils.Db.QueryRow(sqlStr, bookId)
-	row.Scan(b.Id, b.Title, b.Author, b.Price, b.Sales, b.Stock, b.ImgPth)
-	return b, nil
+	book := new(Book)
+	row.Scan(&book.Id, &book.Title, &book.Author, &book.Price, &book.Sales, &book.Stock, &book.ImgPth)
+	return book, nil
 }
 
 //UpdateBook 根据图书的id更新图书信息
@@ -91,7 +89,7 @@ func (b *Book)UpdateBook() error {
 
 //GetPageBooks 获取带分页的图书信息
 func (b *Book) GetPageBooks(pageNo string) (*Page, error) {
-	//将页码转换为int64类型
+	// 将页码转换为int64类型
 	iPageNo, _ := strconv.ParseInt(pageNo, 10, 64)
 	//获取数据库中图书的总记录
 	sqlStr := "select count(*) from books"
@@ -111,13 +109,13 @@ func (b *Book) GetPageBooks(pageNo string) (*Page, error) {
 		totalPageNo = totalRecord/pageSize + 1
 	}
 	// 获取当前页中的图书
-	sqlStr2 := "select id, title,author,prcie,sales,stok,img_pth from books limit ?,?"
+	sqlStr2 := "select id, title,author,price,sales,stock,imgpth from books limit ?,?"
 	//执行
 	rows, err := utils.Db.Query(sqlStr2, (iPageNo-1)*pageSize, pageSize)
 	if err != nil {
 		return nil, err
 	}
-	var books []*Book
+	var books []*Book = make([]*Book, 0)
 	for rows.Next() {
 		book := &Book{}
 		rows.Scan(&book.Id, &book.Title, &book.Author, &book.Sales, &book.Stock, &book.ImgPth)
@@ -140,11 +138,13 @@ func (b *Book) GetPageBooks(pageNo string) (*Page, error) {
 func (b *Book) GetPageBooksByPrice(pageNo string, minPrice string, maxPrice string) (*Page, error) {
 	//将页码转换为int64类型
 	iPageNo, _ := strconv.ParseInt(pageNo, 10, 64)
+	minprice,_ := strconv.ParseFloat(minPrice,64)
+	maxprice,_ := strconv.ParseFloat(maxPrice,64)
 	sqlStr := "select count(*) from books where price between ? and ?"
 	//
 	// 查询得到的总记录数
 	var totalRecord int64
-	row := utils.Db.QueryRow(sqlStr, minPrice, maxPrice)
+	row := utils.Db.QueryRow(sqlStr, minprice, maxprice)
 	row.Scan(&totalRecord)
 	var pageSize int64 = 4 // 设置每页显示的条数
 	var totalPageSize int64
@@ -153,8 +153,8 @@ func (b *Book) GetPageBooksByPrice(pageNo string, minPrice string, maxPrice stri
 	} else {
 		totalPageSize = totalRecord/pageSize + 1
 	}
-	sqlStr2 := "select id,title,author,price,sales,stok,img_pth from books between ? and ? limit ?,?"
-	rows, _ := utils.Db.Query(sqlStr2, minPrice, maxPrice, (iPageNo-1)*pageSize, pageSize)
+	sqlStr2 := "select id,title,author,price,sales,stock,imgpth from books between ? and ? limit ?,?"
+	rows, _ := utils.Db.Query(sqlStr2, minprice, maxprice, (iPageNo-1)*pageSize, pageSize)
 	var books []*Book
 	for rows.Next() {
 		book := &Book{}
