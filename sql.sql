@@ -1,3 +1,12 @@
+-- 创建用户表users
+CREATE TABLE `users` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `email` varchar(40) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 -- 创建sessions表
 CREATE TABLE sessions(
 session_id VARCHAR(100) PRIMARY KEY,

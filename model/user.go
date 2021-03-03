@@ -27,7 +27,6 @@ func (u *User) CheckUserName(userName string) (*User, error) {
 	row := utils.Db.QueryRow(sqlStr, userName)
 	row.Scan(&u.Id, &u.UserName, &u.PassWord, &u.Email)
 	return u, nil
-
 }
 
 //CheckUserNameAndPassword 根据用户名和密码从数据库中查询一条记录

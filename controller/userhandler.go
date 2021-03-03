@@ -43,6 +43,8 @@ func Regist(w http.ResponseWriter, r *http.Request) {
 }
 
 //Login 处理用户登录的函数
+// 1：登陆成功，用户的信息和uuid 保存到session表中
+// 2：创建一个与session关联cookie并发送cookie到浏览器
 func Login(w http.ResponseWriter, r *http.Request) {
 	// 1.1 判断用户是否已经登陆
 	sessModel := model.Session{}
@@ -58,7 +60,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 		//调用user model 中验证用户名和密码的方法 CheckUserNameAndPassword
 		user, _ := userModel.CheckUserNameAndPassword(username, password)
-		// 如果用户名和密码正确 生产UUID作为Session的id
+		// 如果用户名和密码正确 生成UUID作为Session的id
 		if len(user.Id) > 0 {
 			uuid := utils.CreateUUid()
 			//创建一个session
